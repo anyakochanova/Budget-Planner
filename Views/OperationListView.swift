@@ -19,7 +19,7 @@ struct OperationListView: View {
             
             Text("Balance: \(viewModel.totalBalance, format: .currency(code: "RUB"))")
             
-            Text("Expenses: \(viewModel.expenses, format: .currency(code: "RUBles"))")
+            Text("Expenses: \(viewModel.expenses, format: .currency(code: "RUB"))")
             
             List {
                 ForEach(viewModel.filteredOperations) { operation in
