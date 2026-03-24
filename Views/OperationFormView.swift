@@ -33,14 +33,16 @@ struct OperationFormView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding()
             
-            TextField("Date",
-                      text: $formViewModel.newOperationDate)
-                .textFieldStyle(.roundedBorder)
-                .padding()
+            DatePicker("Date",
+                selection: $formViewModel.newOperationDate,
+                displayedComponents: .date
+            )
+            .padding()
             
             Button(isEditing ? "Update" : "Add") {
-                formViewModel.save()
-                dismiss()
+                if formViewModel.save(){
+                    dismiss()
+                }
             }
             .buttonStyle(.borderedProminent)
             .padding(.top)

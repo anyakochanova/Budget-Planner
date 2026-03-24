@@ -14,7 +14,7 @@ struct OperationRowView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(operation.title)
-                Text(operation.date)
+                Text(operation.date, format: .dateTime.day().month().year())
                     .font(.caption)
                     .foregroundStyle(.gray)
             }
@@ -30,7 +30,13 @@ struct OperationRowView: View {
 
 
 #Preview {
-    OperationRowView(operation: Operation(title: "Food", amount: -40, date: "02.02.2026"))
+    OperationRowView(
+        operation: Operation(
+            title: "Food",
+            amount: -40,
+            date: Date()
+        )
+    )
 }
 
 

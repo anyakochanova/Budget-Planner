@@ -11,7 +11,7 @@ import Combine
 class FormViewModel: ObservableObject {
     @Published var newOperationTitle = ""
     @Published var newOperationAmount = ""
-    @Published var newOperationDate = ""
+    @Published var newOperationDate = Date()
     
     private let listViewModel: ListViewModel
     var originalOperation: Operation?
@@ -27,11 +27,15 @@ class FormViewModel: ObservableObject {
         }
     }
     
-    func save() {
+    func save() -> Bool {
+        guard !newOperationTitle.isEmpty else { return false }
+        guard let amount = Double(newOperationAmount) else { return false }
+//        guard !newOperationDate.isEmpty else { return false }
+        
         let newOperation = Operation(
             id: originalOperation?.id ?? UUID(),
             title: newOperationTitle,
-            amount: Double(newOperationAmount) ?? 0.0,
+            amount: amount,
             date: newOperationDate
         )
         
@@ -42,11 +46,12 @@ class FormViewModel: ObservableObject {
         }
         
         clearForms()
+        return true
     }
     
     private func clearForms() {
         newOperationTitle = ""
         newOperationAmount = ""
-        newOperationDate = ""
+        newOperationDate = Date()
     }
 }

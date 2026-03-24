@@ -11,9 +11,9 @@ struct Operation: Identifiable, Codable {
     let id: UUID
     let title: String
     let amount: Double
-    let date: String
+    let date: Date
     
-    init(id: UUID = UUID(), title: String, amount: Double, date: String) {
+    init(id: UUID = UUID(), title: String, amount: Double, date: Date) {
         self.id = id
         self.title = title
         self.amount = amount

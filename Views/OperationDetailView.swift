@@ -52,7 +52,7 @@ struct OperationDetailView: View {
         operation: Operation(
             title: "Food",
             amount: -40,
-            date: "02.02.2026"
+            date: Date()
         )        
     )
 }
