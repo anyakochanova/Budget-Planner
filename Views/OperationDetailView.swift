@@ -7,42 +7,68 @@
 
 import SwiftUI
 
-struct OperationDetailView: View {    
+struct OperationDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showEditSheet = false
-    @ObservedObject var viewModel: ListViewModel    
+    @ObservedObject var viewModel: ListViewModel
     
     let operation: Operation
     
     var body: some View {
-        VStack {
-            Text("""
-                \(operation.title)
-                \(operation.amount, format: .currency(code: "RUB"))
-                \(operation.date)
-                """)
-                .padding(.vertical, 12)
-                .padding(.horizontal, 16)
-                .frame(maxWidth: .infinity)
-                .background(Color.blue)
+        VStack(spacing: 20) {
             
+            // Operation
+            VStack(spacing: 12) {
+                
+                Text(operation.title)
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                
+                Text(operation.amount, format: .currency(code: "RUB"))
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(operation.type == .expense ? .red : .green)
+                
+                Text(operation.date, format: .dateTime.day().month().year())
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(16)
+            .padding(.horizontal)
+            
+            
+            // Edit button
             Button("Edit operation") {
                 showEditSheet = true
             }
+            .buttonStyle(.borderedProminent)
+            .padding(.horizontal)
             
-            .sheet(isPresented: $showEditSheet) {
-                OperationFormView(
-                    listViewModel: viewModel,
-                    operation: operation
-                )
-            }
             
-            Button("Remove operation") {
+            // Delete button
+            Button(role: .destructive) {
                 viewModel.removeOperation(operation)
                 dismiss()
+            } label: {
+                Text("Delete operation")
+                    .frame(maxWidth: .infinity)
             }
+            .buttonStyle(.bordered)
+            .padding(.horizontal)
+                        
+            Spacer()
         }
-        .frame(width: 250)
+        .navigationTitle("Details")
+        .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showEditSheet) {
+            OperationFormView(
+                listViewModel: viewModel,
+                operation: operation
+            )
+        }
     }
 }
 
@@ -52,7 +78,8 @@ struct OperationDetailView: View {
         operation: Operation(
             title: "Food",
             amount: -40,
-            date: Date()
-        )        
+            date: Date(),
+            type: OperationType.expense
+        )
     )
 }

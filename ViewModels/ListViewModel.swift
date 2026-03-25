@@ -11,7 +11,6 @@ import Combine
 class ListViewModel: ObservableObject {
     
     // Data state
-
     @Published private(set) var operations: [Operation] = [] {
         didSet {
             save()
@@ -23,16 +22,14 @@ class ListViewModel: ObservableObject {
     private let operationsKey = "operations"
     
     // Initialization
-    
     init() {
         load()
     }
     
     // Computed properties
-    
     var filteredOperations : [Operation] {
         if showOnlyExpenses {
-            operations.filter { $0.amount < 0 }
+            operations.filter { $0.type == .expense }
         } else {
             operations
         }
@@ -44,20 +41,19 @@ class ListViewModel: ObservableObject {
     
     var expenses: Double {
         operations
-            .filter { $0.amount < 0 }
+            .filter { $0.type == .expense }
             .map { $0.amount }
             .reduce(0, +)
     }
     
     var incomes: Double {
         operations
-            .filter { $0.amount > 0 }
+            .filter { $0.type == .income }
             .map { $0.amount }
             .reduce(0, +)
     }
     
-    // Actions
-    
+    // Actions    
     func editOperation(_ operation: Operation) {
         if let index = operations.firstIndex(where: { $0.id == operation.id }) {
             operations[index] = operation

@@ -23,6 +23,14 @@ struct OperationFormView: View {
     var body: some View {
         VStack {
             
+            Picker("Operation type", selection: $formViewModel.newOperationType) {
+                ForEach(OperationType.allCases) { type in
+                    Text(type.title).tag(type)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            
             TextField("Title",
                       text: $formViewModel.newOperationTitle)
                 .textFieldStyle(.roundedBorder)

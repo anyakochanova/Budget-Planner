@@ -12,6 +12,7 @@ class FormViewModel: ObservableObject {
     @Published var newOperationTitle = ""
     @Published var newOperationAmount = ""
     @Published var newOperationDate = Date()
+    @Published var newOperationType: OperationType = .income
     
     private let listViewModel: ListViewModel
     var originalOperation: Operation?
@@ -30,13 +31,13 @@ class FormViewModel: ObservableObject {
     func save() -> Bool {
         guard !newOperationTitle.isEmpty else { return false }
         guard let amount = Double(newOperationAmount) else { return false }
-//        guard !newOperationDate.isEmpty else { return false }
         
         let newOperation = Operation(
             id: originalOperation?.id ?? UUID(),
             title: newOperationTitle,
             amount: amount,
-            date: newOperationDate
+            date: newOperationDate,
+            type: newOperationType
         )
         
         if originalOperation == nil {
@@ -53,5 +54,6 @@ class FormViewModel: ObservableObject {
         newOperationTitle = ""
         newOperationAmount = ""
         newOperationDate = Date()
+        newOperationType = OperationType.income
     }
 }

@@ -22,7 +22,7 @@ struct OperationRowView: View {
             Spacer()
             
             Text("\(operation.amount, format: .currency(code: "RUB"))")
-                .foregroundStyle(operation.amount < 0 ? .red : .green)
+                .foregroundStyle(operation.type == .expense ? .red : .green)
         }
         .padding(.vertical, 4)
     }
@@ -34,7 +34,8 @@ struct OperationRowView: View {
         operation: Operation(
             title: "Food",
             amount: -40,
-            date: Date()
+            date: Date(),
+            type: OperationType.expense
         )
     )
 }

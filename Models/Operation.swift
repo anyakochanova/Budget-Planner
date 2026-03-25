@@ -12,11 +12,13 @@ struct Operation: Identifiable, Codable {
     let title: String
     let amount: Double
     let date: Date
+    let type: OperationType
     
-    init(id: UUID = UUID(), title: String, amount: Double, date: Date) {
+    init(id: UUID = UUID(), title: String, amount: Double, date: Date, type: OperationType) {
         self.id = id
         self.title = title
         self.amount = amount
         self.date = date
+        self.type = type
     }
 }
