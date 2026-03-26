@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ListViewModel: ObservableObject {
+class ListViewModel: ObservableObject, OperationsStorageProtocol {
     
     // Data state
     @Published private(set) var operations: [Operation] = [] {

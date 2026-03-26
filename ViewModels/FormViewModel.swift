@@ -14,11 +14,12 @@ class FormViewModel: ObservableObject {
     @Published var newOperationDate = Date()
     @Published var newOperationType: OperationType = .income
     
-    private let listViewModel: ListViewModel
+//    private let listViewModel: ListViewModel
+    private let storage: OperationsStorageProtocol
     var originalOperation: Operation?
     
-    init(listViewModel: ListViewModel, operation: Operation? = nil) {
-        self.listViewModel = listViewModel
+    init(storage: OperationsStorageProtocol, operation: Operation? = nil) {
+        self.storage = storage
         self.originalOperation = operation
         
         if let operation {
@@ -41,9 +42,9 @@ class FormViewModel: ObservableObject {
         )
         
         if originalOperation == nil {
-            listViewModel.addOperation(newOperation)
+            storage.addOperation(newOperation)
         } else {
-            listViewModel.editOperation(newOperation)
+            storage.editOperation(newOperation)
         }
         
         clearForms()
