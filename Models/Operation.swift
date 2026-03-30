@@ -9,16 +9,16 @@ import Foundation
 
 struct Operation: Identifiable, Codable {
     let id: UUID
+    let type: OperationType
     let title: String
     let amount: Double
     let date: Date
-    let type: OperationType
     
-    init(id: UUID = UUID(), title: String, amount: Double, date: Date, type: OperationType) {
+    init(id: UUID = UUID(), type: OperationType, title: String, amount: Double, date: Date) {
         self.id = id
+        self.type = type
         self.title = title
         self.amount = amount
         self.date = date
-        self.type = type
     }
 }

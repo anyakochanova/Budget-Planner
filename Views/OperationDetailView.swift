@@ -26,7 +26,7 @@ struct OperationDetailView: View {
                 
                 Text(operation.amount, format: .currency(code: "RUB"))
                     .font(.title)
-                    .fontWeight(.bold)
+                    .fontWeight(.medium)
                     .foregroundStyle(operation.type == .expense ? .red : .green)
                 
                 Text(operation.date, format: .dateTime.day().month().year())
@@ -39,9 +39,8 @@ struct OperationDetailView: View {
             .cornerRadius(16)
             .padding(.horizontal)
             
-            
             // Edit button
-            Button("Edit operation") {
+            Button("Edit") {
                 showEditSheet = true
             }
             .buttonStyle(.borderedProminent)
@@ -53,7 +52,7 @@ struct OperationDetailView: View {
                 viewModel.removeOperation(operation)
                 dismiss()
             } label: {
-                Text("Delete operation")
+                Text("Delete")
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.bordered)
@@ -76,10 +75,10 @@ struct OperationDetailView: View {
     OperationDetailView(
         viewModel: ListViewModel(),
         operation: Operation(
+            type: OperationType.expense,
             title: "Food",
             amount: -40,
-            date: Date(),
-            type: OperationType.expense
+            date: Date()
         )
     )
 }

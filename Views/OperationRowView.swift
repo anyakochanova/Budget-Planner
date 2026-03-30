@@ -32,10 +32,10 @@ struct OperationRowView: View {
 #Preview {
     OperationRowView(
         operation: Operation(
+            type: OperationType.expense,
             title: "Food",
             amount: -40,
-            date: Date(),
-            type: OperationType.expense
+            date: Date()
         )
     )
 }

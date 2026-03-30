@@ -59,9 +59,9 @@
 		8210AEF52F3DF0D00093C833 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				823BD8792F757AE50018DC35 /* OperationsStorageProtocol.swift */,
-				823E575F2F742BBA00372A2F /* OperationType.swift */,
 				8210AEF32F3DDC870093C833 /* Operation.swift */,
+				823E575F2F742BBA00372A2F /* OperationType.swift */,
+				823BD8792F757AE50018DC35 /* OperationsStorageProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

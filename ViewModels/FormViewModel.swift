@@ -9,12 +9,11 @@ import Foundation
 import Combine
 
 class FormViewModel: ObservableObject {
+    @Published var newOperationType: OperationType = .income
     @Published var newOperationTitle = ""
     @Published var newOperationAmount = ""
     @Published var newOperationDate = Date()
-    @Published var newOperationType: OperationType = .income
     
-//    private let listViewModel: ListViewModel
     private let storage: OperationsStorageProtocol
     var originalOperation: Operation?
     
@@ -23,6 +22,7 @@ class FormViewModel: ObservableObject {
         self.originalOperation = operation
         
         if let operation {
+            newOperationType = operation.type
             newOperationTitle = operation.title
             newOperationAmount = String(operation.amount)
             newOperationDate = operation.date
@@ -35,10 +35,10 @@ class FormViewModel: ObservableObject {
         
         let newOperation = Operation(
             id: originalOperation?.id ?? UUID(),
+            type: newOperationType,
             title: newOperationTitle,
             amount: amount,
-            date: newOperationDate,
-            type: newOperationType
+            date: newOperationDate
         )
         
         if originalOperation == nil {
@@ -52,9 +52,9 @@ class FormViewModel: ObservableObject {
     }
     
     private func clearForms() {
+        newOperationType = OperationType.income
         newOperationTitle = ""
         newOperationAmount = ""
         newOperationDate = Date()
-        newOperationType = OperationType.income
     }
 }

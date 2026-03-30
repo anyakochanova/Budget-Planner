@@ -14,7 +14,7 @@ struct OperationFormView: View {
     init(listViewModel: ListViewModel, operation: Operation? = nil) {
         _formViewModel = StateObject(
             wrappedValue: FormViewModel(
-                listViewModel: listViewModel,
+                storage: listViewModel,
                 operation: operation
             )
         )
