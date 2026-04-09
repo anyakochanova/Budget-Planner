@@ -29,6 +29,10 @@ class FormViewModel: ObservableObject {
         }
     }
     
+    deinit {
+        print("FormViewModel deinit")
+    }   
+    
     func save() -> Bool {
         guard !newOperationTitle.isEmpty else { return false }
         guard let amount = Double(newOperationAmount) else { return false }

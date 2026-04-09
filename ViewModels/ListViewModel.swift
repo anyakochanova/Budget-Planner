@@ -11,6 +11,7 @@ import Combine
 class ListViewModel: ObservableObject, OperationsStorageProtocol {
     
     // Data state
+    // private(set) – читать можно отовсюду, а изменять только внутри файла/класса
     @Published private(set) var operations: [Operation] = [] {
         didSet {
             save()
@@ -24,6 +25,10 @@ class ListViewModel: ObservableObject, OperationsStorageProtocol {
     // Initialization
     init() {
         load()
+    }
+    
+    deinit {
+        print("ListViewModel deinit")
     }
     
     // Computed properties
