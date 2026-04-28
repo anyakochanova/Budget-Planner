@@ -19,6 +19,7 @@
 		823E57602F742BC700372A2F /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823E575F2F742BBA00372A2F /* OperationType.swift */; };
 		8244D0362F505F4400D0E1B9 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8244D0352F505F3500D0E1B9 /* FormViewModel.swift */; };
 		8244D0382F505F7000D0E1B9 /* OperationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8244D0372F505F6800D0E1B9 /* OperationFormView.swift */; };
+		828A56382F9FDD2100A478B7 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A56372F9FDD1800A478B7 /* MockStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		823E575F2F742BBA00372A2F /* OperationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationType.swift; sourceTree = "<group>"; };
 		8244D0352F505F3500D0E1B9 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		8244D0372F505F6800D0E1B9 /* OperationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationFormView.swift; sourceTree = "<group>"; };
+		828A56372F9FDD1800A478B7 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -61,7 +63,6 @@
 			children = (
 				8210AEF32F3DDC870093C833 /* Operation.swift */,
 				823E575F2F742BBA00372A2F /* OperationType.swift */,
-				823BD8792F757AE50018DC35 /* OperationsStorageProtocol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -95,6 +96,7 @@
 				8210AF0D2F3DF18D0093C833 /* Views */,
 				822DB17D2F4880410093A51D /* ViewModels */,
 				8210AEF52F3DF0D00093C833 /* Models */,
+				82B5ED982FA0F5010012B391 /* Services */,
 				823805A62F3A4D6900AF0473 /* Budget */,
 				823805A52F3A4D6900AF0473 /* Products */,
 			);
@@ -106,6 +108,15 @@
 				823805A42F3A4D6900AF0473 /* Budget.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		82B5ED982FA0F5010012B391 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				823BD8792F757AE50018DC35 /* OperationsStorageProtocol.swift */,
+				828A56372F9FDD1800A478B7 /* MockStorage.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8244D0362F505F4400D0E1B9 /* FormViewModel.swift in Sources */,
+				828A56382F9FDD2100A478B7 /* MockStorage.swift in Sources */,
 				823E57602F742BC700372A2F /* OperationType.swift in Sources */,
 				822DB17C2F487FF60093A51D /* ListViewModel.swift in Sources */,
 				8210AEF42F3DDC870093C833 /* Operation.swift in Sources */,
