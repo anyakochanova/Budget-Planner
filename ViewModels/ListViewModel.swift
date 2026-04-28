@@ -8,23 +8,20 @@
 import Foundation
 import Combine
 
-class ListViewModel: ObservableObject, OperationsStorageProtocol {
+class ListViewModel: ObservableObject {
     
     // Data state
     // private(set) – читать можно отовсюду, а изменять только внутри файла/класса
-    @Published private(set) var operations: [Operation] = [] {
-        didSet {
-            save()
-        }
-    }
-    
+    @Published private(set) var operations: [Operation] = []
     @Published var showOnlyExpenses = false
     
+    private let storage: OperationsStorageProtocol
     private let operationsKey = "operations"
     
     // Initialization
-    init() {
-        load()
+    init(storage: OperationsStorageProtocol) {
+        self.storage = storage
+        self.operations = storage.loadOperations()
     }
     
     deinit {
@@ -71,24 +68,5 @@ class ListViewModel: ObservableObject, OperationsStorageProtocol {
     
     func removeOperation(_ operation: Operation) {
         operations.removeAll { $0.id == operation.id }
-    }
-    
-    func save() {
-        let encoder = JSONEncoder()
-        
-        if let data = try? encoder.encode(operations) {
-            UserDefaults.standard.set(data, forKey: operationsKey)
-        }
-    }
-    
-    func load() {
-        guard let data = UserDefaults.standard.data(forKey: operationsKey)
-        else { return }
-        
-        let decoder = JSONDecoder()
-        
-        if let decodedOperations = try? decoder.decode([Operation].self, from: data) {
-            operations = decodedOperations
-        }
     }
 }
