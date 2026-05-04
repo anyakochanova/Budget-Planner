@@ -14,7 +14,8 @@ class FormViewModel: ObservableObject {
     @Published var newOperationAmount = ""
     @Published var newOperationDate = Date()
     
-    private let storage: OperationsStorageProtocol
+//  private let storage: OperationsStorageProtocol
+    let storage: OperationsStorageProtocol
     var originalOperation: Operation?
     
     init(storage: OperationsStorageProtocol, operation: Operation? = nil) {

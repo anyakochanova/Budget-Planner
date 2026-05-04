@@ -11,10 +11,10 @@ struct OperationFormView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var formViewModel: FormViewModel
     
-    init(listViewModel: ListViewModel, operation: Operation? = nil) {
+    init(storage: OperationsStorageProtocol, operation: Operation? = nil) {
         _formViewModel = StateObject(
             wrappedValue: FormViewModel(
-                storage: listViewModel,
+                storage: storage,
                 operation: operation
             )
         )
@@ -22,7 +22,6 @@ struct OperationFormView: View {
     
     var body: some View {
         VStack {
-            
             Picker("Operation type", selection: $formViewModel.newOperationType) {
                 ForEach(OperationType.allCases) { type in
                     Text(type.title).tag(type)
@@ -65,6 +64,6 @@ struct OperationFormView: View {
 
 #Preview {
     OperationFormView(
-        listViewModel: ListViewModel()
+        storage: MockStorage()
     )
 }

@@ -13,3 +13,9 @@ protocol OperationsStorageProtocol {
     func removeOperation(_ operation: Operation)
     func loadOperations() -> [Operation]
 }
+
+extension OperationsStorageProtocol {
+    func isEmpty(_ operations: [Operation]) -> Bool {
+        operations.isEmpty
+    }
+}

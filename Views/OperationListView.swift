@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OperationListView: View {
     @State private var showAddSheet = false
-    @StateObject private var viewModel = ListViewModel()
+    @StateObject private var viewModel = ListViewModel(storage: MockStorage())
 
     var body: some View {
         VStack {
@@ -40,7 +40,7 @@ struct OperationListView: View {
             
             .sheet(isPresented: $showAddSheet) {
                 OperationFormView(
-                    listViewModel: viewModel
+                    storage: viewModel.storage
                 )
             }
         }

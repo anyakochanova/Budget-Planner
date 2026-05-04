@@ -64,8 +64,7 @@ struct OperationDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showEditSheet) {
             OperationFormView(
-                listViewModel: viewModel,
-                operation: operation
+                storage: viewModel.storage
             )
         }
     }
@@ -73,7 +72,7 @@ struct OperationDetailView: View {
 
 #Preview {
     OperationDetailView(
-        viewModel: ListViewModel(),
+        viewModel: ListViewModel(storage: MockStorage()),
         operation: Operation(
             type: OperationType.expense,
             title: "Food",

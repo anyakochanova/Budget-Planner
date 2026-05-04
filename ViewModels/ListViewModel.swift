@@ -15,7 +15,8 @@ class ListViewModel: ObservableObject {
     @Published private(set) var operations: [Operation] = []
     @Published var showOnlyExpenses = false
     
-    private let storage: OperationsStorageProtocol
+//  private let storage: OperationsStorageProtocol
+    let storage: OperationsStorageProtocol
     private let operationsKey = "operations"
     
     // Initialization
