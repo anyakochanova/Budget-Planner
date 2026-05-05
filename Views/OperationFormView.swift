@@ -11,10 +11,10 @@ struct OperationFormView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var formViewModel: FormViewModel
     
-    init(storage: OperationsStorageProtocol, operation: Operation? = nil) {
+    init(viewModel: ListViewModel, operation: Operation? = nil) {
         _formViewModel = StateObject(
             wrappedValue: FormViewModel(
-                storage: storage,
+                viewModel: viewModel,
                 operation: operation
             )
         )
@@ -64,6 +64,6 @@ struct OperationFormView: View {
 
 #Preview {
     OperationFormView(
-        storage: MockStorage()
+        viewModel: ListViewModel(storage: MockStorage())
     )
 }

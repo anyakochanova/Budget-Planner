@@ -15,7 +15,7 @@ struct OperationListView: View {
         VStack {
             Toggle("Show only expenses",
                    isOn: $viewModel.showOnlyExpenses)
-                .padding()
+                .padding()  
             
             Text("Balance: \(viewModel.totalBalance, format: .currency(code: "RUB"))")
             
@@ -40,7 +40,7 @@ struct OperationListView: View {
             
             .sheet(isPresented: $showAddSheet) {
                 OperationFormView(
-                    storage: viewModel.storage
+                    viewModel: viewModel
                 )
             }
         }

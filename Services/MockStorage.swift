@@ -16,19 +16,27 @@ final class MockStorage: OperationsStorageProtocol {
         Operation(type: .expense, title: "Mock food", amount: -200, date: Date())
     ]
     
-    // Actions 
+    // Initialization
+    init() {
+        print("MockStorage init")
+    }
+    
+    // Actions
     func editOperation(_ operation: Operation) {
         if let index = operations.firstIndex(where: { $0.id == operation.id }) {
             operations[index] = operation
         }
+        print("MockStorage updated: \(operations.count)")
     }
     
     func addOperation(_ operation: Operation) {
         operations.append(operation)
+        print("MockStorage updated: \(operations.count)")
     }
     
     func removeOperation(_ operation: Operation) {
         operations.removeAll { $0.id == operation.id }
+        print("MockStorage updated: \(operations.count)")
     }
     
     func loadOperations() -> [Operation] {

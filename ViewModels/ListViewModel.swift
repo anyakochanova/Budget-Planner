@@ -15,8 +15,7 @@ class ListViewModel: ObservableObject {
     @Published private(set) var operations: [Operation] = []
     @Published var showOnlyExpenses = false
     
-//  private let storage: OperationsStorageProtocol
-    let storage: OperationsStorageProtocol
+    private let storage: OperationsStorageProtocol
     private let operationsKey = "operations"
     
     // Initialization
@@ -58,16 +57,17 @@ class ListViewModel: ObservableObject {
     
     // Actions    
     func editOperation(_ operation: Operation) {
-        if let index = operations.firstIndex(where: { $0.id == operation.id }) {
-            operations[index] = operation
-        }
+        storage.editOperation(operation)
+        operations = storage.loadOperations()
     }
     
     func addOperation(_ operation: Operation) {
-        operations.append(operation)
+        storage.addOperation(operation)
+        operations = storage.loadOperations()
     }
     
     func removeOperation(_ operation: Operation) {
-        operations.removeAll { $0.id == operation.id }
+        storage.removeOperation(operation)
+        operations = storage.loadOperations()
     }
 }

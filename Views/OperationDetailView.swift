@@ -46,7 +46,6 @@ struct OperationDetailView: View {
             .buttonStyle(.borderedProminent)
             .padding(.horizontal)
             
-            
             // Delete button
             Button(role: .destructive) {
                 viewModel.removeOperation(operation)
@@ -64,7 +63,8 @@ struct OperationDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showEditSheet) {
             OperationFormView(
-                storage: viewModel.storage
+                viewModel: viewModel,
+                operation: operation
             )
         }
     }
