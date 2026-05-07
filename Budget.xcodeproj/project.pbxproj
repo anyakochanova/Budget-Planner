@@ -20,6 +20,7 @@
 		8244D0362F505F4400D0E1B9 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8244D0352F505F3500D0E1B9 /* FormViewModel.swift */; };
 		8244D0382F505F7000D0E1B9 /* OperationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8244D0372F505F6800D0E1B9 /* OperationFormView.swift */; };
 		828A56382F9FDD2100A478B7 /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828A56372F9FDD1800A478B7 /* MockStorage.swift */; };
+		82AC3B982FA905FC00F7169E /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC3B972FA905F800F7169E /* StorageError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		8244D0352F505F3500D0E1B9 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		8244D0372F505F6800D0E1B9 /* OperationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationFormView.swift; sourceTree = "<group>"; };
 		828A56372F9FDD1800A478B7 /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		82AC3B972FA905F800F7169E /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -115,6 +117,7 @@
 			children = (
 				823BD8792F757AE50018DC35 /* OperationsStorageProtocol.swift */,
 				828A56372F9FDD1800A478B7 /* MockStorage.swift */,
+				82AC3B972FA905F800F7169E /* StorageError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 				828A56382F9FDD2100A478B7 /* MockStorage.swift in Sources */,
 				823E57602F742BC700372A2F /* OperationType.swift in Sources */,
 				822DB17C2F487FF60093A51D /* ListViewModel.swift in Sources */,
+				82AC3B982FA905FC00F7169E /* StorageError.swift in Sources */,
 				8210AEF42F3DDC870093C833 /* Operation.swift in Sources */,
 				8210AF0F2F3DFFC70093C833 /* OperationRowView.swift in Sources */,
 				8210AF082F3DF16A0093C833 /* ContentView.swift in Sources */,

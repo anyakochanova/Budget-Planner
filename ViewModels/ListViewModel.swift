@@ -55,18 +55,19 @@ class ListViewModel: ObservableObject {
             .reduce(0, +)
     }
     
-    // Actions    
-    func editOperation(_ operation: Operation) {
-        if let index = operations.firstIndex(where: { $0.id == operation.id }) {
-            operations[index] = operation
-        }
+    // Actions
+    func editOperation(_ operation: Operation) throws {
+        try storage.editOperation(operation)
+        operations = storage.loadOperations()
     }
     
-    func addOperation(_ operation: Operation) {
-        operations.append(operation)
+    func addOperation(_ operation: Operation) throws {
+        try storage.addOperation(operation)
+        operations = storage.loadOperations()
     }
     
     func removeOperation(_ operation: Operation) {
-        operations.removeAll { $0.id == operation.id }
+        storage.removeOperation(operation)
+        operations = storage.loadOperations()
     }
 }

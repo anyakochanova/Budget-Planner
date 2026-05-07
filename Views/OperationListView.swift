@@ -9,13 +9,13 @@ import SwiftUI
 
 struct OperationListView: View {
     @State private var showAddSheet = false
-    @StateObject private var viewModel = ListViewModel()
+    @StateObject private var viewModel = ListViewModel(storage: MockStorage())
 
     var body: some View {
         VStack {
             Toggle("Show only expenses",
                    isOn: $viewModel.showOnlyExpenses)
-                .padding()
+                .padding()  
             
             Text("Balance: \(viewModel.totalBalance, format: .currency(code: "RUB"))")
             
@@ -40,7 +40,7 @@ struct OperationListView: View {
             
             .sheet(isPresented: $showAddSheet) {
                 OperationFormView(
-                    listViewModel: viewModel
+                    viewModel: viewModel
                 )
             }
         }

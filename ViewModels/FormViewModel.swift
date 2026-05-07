@@ -14,11 +14,11 @@ class FormViewModel: ObservableObject {
     @Published var newOperationAmount = ""
     @Published var newOperationDate = Date()
     
-    private let storage: OperationsStorageProtocol
+    let viewModel: ListViewModel
     var originalOperation: Operation?
     
-    init(storage: OperationsStorageProtocol, operation: Operation? = nil) {
-        self.storage = storage
+    init(viewModel: ListViewModel, operation: Operation? = nil) {
+        self.viewModel = viewModel
         self.originalOperation = operation
         
         if let operation {
@@ -34,9 +34,9 @@ class FormViewModel: ObservableObject {
     }   
     
     func save() -> Bool {
-        guard !newOperationTitle.isEmpty else { return false }
+//        guard !newOperationTitle.isEmpty else { return false }
         guard let amount = Double(newOperationAmount) else { return false }
-        
+        	
         let newOperation = Operation(
             id: originalOperation?.id ?? UUID(),
             type: newOperationType,
@@ -46,9 +46,17 @@ class FormViewModel: ObservableObject {
         )
         
         if originalOperation == nil {
-            storage.addOperation(newOperation)
+            do {
+                try viewModel.addOperation(newOperation)
+            } catch {
+                print("Storage error::", error)
+            }
         } else {
-            storage.editOperation(newOperation)
+            do {
+                try viewModel.editOperation(newOperation)
+            } catch {
+                print("Storage error::", error)
+            }
         }
         
         clearForms()

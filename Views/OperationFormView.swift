@@ -11,10 +11,10 @@ struct OperationFormView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var formViewModel: FormViewModel
     
-    init(listViewModel: ListViewModel, operation: Operation? = nil) {
+    init(viewModel: ListViewModel, operation: Operation? = nil) {
         _formViewModel = StateObject(
             wrappedValue: FormViewModel(
-                storage: listViewModel,
+                viewModel: viewModel,
                 operation: operation
             )
         )
@@ -22,7 +22,6 @@ struct OperationFormView: View {
     
     var body: some View {
         VStack {
-            
             Picker("Operation type", selection: $formViewModel.newOperationType) {
                 ForEach(OperationType.allCases) { type in
                     Text(type.title).tag(type)
@@ -48,7 +47,7 @@ struct OperationFormView: View {
             .padding()
             
             Button(isEditing ? "Update" : "Add") {
-                if formViewModel.save(){
+                if formViewModel.save() {
                     dismiss()
                 }
             }
@@ -65,6 +64,6 @@ struct OperationFormView: View {
 
 #Preview {
     OperationFormView(
-        listViewModel: ListViewModel()
+        viewModel: ListViewModel(storage: MockStorage())
     )
 }
