@@ -8,5 +8,6 @@
 import Foundation
 
 enum StorageError: Error {
-    case saveFailed
+    case emptyTytle
+    case invalidAmount
 }

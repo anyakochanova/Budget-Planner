@@ -47,7 +47,7 @@ struct OperationFormView: View {
             .padding()
             
             Button(isEditing ? "Update" : "Add") {
-                if formViewModel.save(){
+                if formViewModel.save() {
                     dismiss()
                 }
             }

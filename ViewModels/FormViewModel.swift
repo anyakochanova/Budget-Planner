@@ -34,9 +34,9 @@ class FormViewModel: ObservableObject {
     }   
     
     func save() -> Bool {
-        guard !newOperationTitle.isEmpty else { return false }
+//        guard !newOperationTitle.isEmpty else { return false }
         guard let amount = Double(newOperationAmount) else { return false }
-        
+        	
         let newOperation = Operation(
             id: originalOperation?.id ?? UUID(),
             type: newOperationType,
@@ -46,9 +46,17 @@ class FormViewModel: ObservableObject {
         )
         
         if originalOperation == nil {
-            viewModel.addOperation(newOperation)
+            do {
+                try viewModel.addOperation(newOperation)
+            } catch {
+                print("Storage error::", error)
+            }
         } else {
-            viewModel.editOperation(newOperation)
+            do {
+                try viewModel.editOperation(newOperation)
+            } catch {
+                print("Storage error::", error)
+            }
         }
         
         clearForms()

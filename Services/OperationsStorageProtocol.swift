@@ -8,8 +8,8 @@
 import Foundation
 
 protocol OperationsStorageProtocol {
-    func editOperation(_ operation: Operation)
-    func addOperation(_ operation: Operation)
+    func editOperation(_ operation: Operation) throws
+    func addOperation(_ operation: Operation) throws
     func removeOperation(_ operation: Operation)
     func loadOperations() -> [Operation]
 }

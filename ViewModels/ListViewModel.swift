@@ -55,14 +55,14 @@ class ListViewModel: ObservableObject {
             .reduce(0, +)
     }
     
-    // Actions    
-    func editOperation(_ operation: Operation) {
-        storage.editOperation(operation)
+    // Actions
+    func editOperation(_ operation: Operation) throws {
+        try storage.editOperation(operation)
         operations = storage.loadOperations()
     }
     
-    func addOperation(_ operation: Operation) {
-        storage.addOperation(operation)
+    func addOperation(_ operation: Operation) throws {
+        try storage.addOperation(operation)
         operations = storage.loadOperations()
     }
     
