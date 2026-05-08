@@ -14,6 +14,9 @@ class FormViewModel: ObservableObject {
     @Published var newOperationAmount = ""
     @Published var newOperationDate = Date()
     
+    @Published var errorMessage = ""
+    @Published var showErrorAlert = false
+    
     let viewModel: ListViewModel
     var originalOperation: Operation?
     
@@ -50,12 +53,16 @@ class FormViewModel: ObservableObject {
                 try viewModel.addOperation(newOperation)
             } catch {
                 print("Storage error::", error)
+                errorMessage = "Storage error: \(error)"
+                showErrorAlert = true
             }
         } else {
             do {
                 try viewModel.editOperation(newOperation)
             } catch {
                 print("Storage error::", error)
+                errorMessage = "Storage error: \(error)"
+                showErrorAlert = true
             }
         }
         
