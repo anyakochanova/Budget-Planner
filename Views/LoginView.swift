@@ -25,4 +25,3 @@ struct LoginView: View {
 #Preview {
     LoginView(handleLogin: {})
 }
-

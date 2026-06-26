@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 class FormViewModel: ObservableObject {
     @Published var newOperationType: OperationType = .income
     @Published var newOperationTitle = ""
@@ -32,12 +33,7 @@ class FormViewModel: ObservableObject {
         }
     }
     
-    deinit {
-        print("FormViewModel deinit")
-    }   
-    
     func save() -> Bool {
-//        guard !newOperationTitle.isEmpty else { return false }
         guard let amount = Double(newOperationAmount) else { return false }
         	
         let newOperation = Operation(

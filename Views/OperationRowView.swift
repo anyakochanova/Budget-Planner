@@ -39,5 +39,3 @@ struct OperationRowView: View {
         )
     )
 }
-
-

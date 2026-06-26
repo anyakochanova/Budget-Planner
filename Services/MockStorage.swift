@@ -16,11 +16,6 @@ final class MockStorage: OperationsStorageProtocol {
         Operation(type: .expense, title: "Mock food", amount: 200, date: Date())
     ]
     
-    // Initialization
-    init() {
-        print("MockStorage init")
-    }
-    
     // Actions
     func editOperation(_ operation: Operation) throws {
         if operation.title.isEmpty {
