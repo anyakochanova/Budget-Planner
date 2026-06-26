@@ -55,6 +55,18 @@ struct OperationFormView: View {
             .padding(.top)
         }
         .padding()
+        
+        .alert(
+            "Error",
+            isPresented: $formViewModel.showErrorAlert
+        ) {
+            
+            Button("OK") { }
+            
+        } message: {
+            
+            Text(formViewModel.errorMessage)
+        }
     }
     
     private var isEditing: Bool {

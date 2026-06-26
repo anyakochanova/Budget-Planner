@@ -8,24 +8,21 @@
 import Foundation
 import Combine
 
+@MainActor
 class ListViewModel: ObservableObject {
     
     // Data state
     // private(set) – читать можно отовсюду, а изменять только внутри файла/класса
     @Published private(set) var operations: [Operation] = []
+    @Published var isLoading: Bool = false
     @Published var showOnlyExpenses = false
     
     private let storage: OperationsStorageProtocol
-    private let operationsKey = "operations"
     
     // Initialization
     init(storage: OperationsStorageProtocol) {
         self.storage = storage
-        self.operations = storage.loadOperations()
-    }
-    
-    deinit {
-        print("ListViewModel deinit")
+        self.operations = []
     }
     
     // Computed properties
@@ -56,10 +53,19 @@ class ListViewModel: ObservableObject {
     }
     
     // Actions
+    func loadOperations() async {
+        isLoading = true
+        
+        try? await Task.sleep(for: .seconds(1))
+        operations = storage.loadOperations()
+        
+        isLoading = false
+    }
+    
     func editOperation(_ operation: Operation) throws {
         try storage.editOperation(operation)
         operations = storage.loadOperations()
-    }
+    }   
     
     func addOperation(_ operation: Operation) throws {
         try storage.addOperation(operation)

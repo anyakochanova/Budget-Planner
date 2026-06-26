@@ -12,9 +12,6 @@ struct LoggedInView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Text("You are logged in")
-                .font(.title)
-            
             OperationListView()
 
             Button("Log out") {
