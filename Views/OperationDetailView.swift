@@ -40,8 +40,11 @@ struct OperationDetailView: View {
             .padding(.horizontal)
             
             // Edit button
-            Button("Edit") {
+            Button {
                 showEditSheet = true
+            } label: {
+                Text("Edit")
+                Image(systemName: "pencil")
             }
             .buttonStyle(.borderedProminent)
             .padding(.horizontal)
@@ -52,14 +55,13 @@ struct OperationDetailView: View {
                 dismiss()
             } label: {
                 Text("Delete")
-                    .frame(maxWidth: .infinity)
+                Image(systemName: "trash")
             }
             .buttonStyle(.bordered)
             .padding(.horizontal)
                         
             Spacer()
         }
-        .navigationTitle("Details")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showEditSheet) {
             OperationFormView(
@@ -71,13 +73,15 @@ struct OperationDetailView: View {
 }
 
 #Preview {
-    OperationDetailView(
-        viewModel: ListViewModel(storage: MockStorage()),
-        operation: Operation(
-            type: OperationType.expense,
-            title: "Food",
-            amount: -40,
-            date: Date()
+    NavigationStack {
+        OperationDetailView(
+            viewModel: ListViewModel(storage: MockStorage()),
+            operation: Operation(
+                type: OperationType.expense,
+                title: "Food",
+                amount: -40,
+                date: Date()
+            )
         )
-    )
+    }
 }

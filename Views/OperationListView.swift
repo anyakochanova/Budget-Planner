@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OperationListView: View {
+    let handleLogout: () -> Void
+    
     @State private var showAddSheet = false
     @StateObject private var viewModel = ListViewModel(storage: MockStorage())
 
@@ -15,19 +17,19 @@ struct OperationListView: View {
         ZStack {
             VStack(spacing: 16) {
                 
-                // SUMMARY
+                // Summary
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Balance: \(viewModel.totalBalance, format: .currency(code: "RUB"))")
                     Text("Expenses: \(viewModel.expenses, format: .currency(code: "RUB"))")
                 }
                 .padding(.horizontal)
                 
-                // FILTER
+                // Filter
                 Toggle("Show only expenses",
                        isOn: $viewModel.showOnlyExpenses)
                 .padding(.horizontal)
                 
-                // OPERATIONS
+                // Operations
                 List {
                     ForEach(viewModel.filteredOperations) { operation in
                         NavigationLink {
@@ -45,14 +47,20 @@ struct OperationListView: View {
                 Spacer(minLength: 0)
             }
             
-            // LOADING OVERLAY
+            // Loading overlay
             if viewModel.isLoading {
                 ProgressView()
             }
         }
         
-        // ADD BUTTON
+        // Add, log out buttons
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Log out") {
+                    handleLogout()
+                }
+            }
+            
             ToolbarItem(placement: .bottomBar) {
                 Button {
                     showAddSheet = true
@@ -73,5 +81,7 @@ struct OperationListView: View {
 }
 
 #Preview {
-    OperationListView()
+    NavigationStack {
+        OperationListView(handleLogout: {})
+    }
 }

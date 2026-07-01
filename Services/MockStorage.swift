@@ -12,8 +12,10 @@ final class MockStorage: OperationsStorageProtocol {
     // Data state
     // private(set) – читать можно отовсюду, а изменять только внутри файла/класса
     private(set) var operations: [Operation] = [
-        Operation(type: .income, title: "Mock salary", amount: 1000, date: Date()),
-        Operation(type: .expense, title: "Mock food", amount: 200, date: Date())
+        Operation(type: .income, title: "Salary", amount: 100000, date: Date()),
+        Operation(type: .expense, title: "Groceries", amount: 2000, date: Date()),
+        Operation(type: .expense, title: "Coffee", amount: 500, date: Date()),
+        Operation(type: .expense, title: "Transport", amount: 1500, date: Date())
     ]
     
     // Actions
@@ -54,4 +56,3 @@ final class MockStorage: OperationsStorageProtocol {
             operations
     }
 }
-
