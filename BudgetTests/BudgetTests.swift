@@ -127,3 +127,4 @@ final class BudgetTests: XCTestCase {
         XCTAssertEqual(sut.filteredOperations.first?.type, .expense)
     }
 }
+
