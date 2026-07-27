@@ -44,6 +44,16 @@ iOS-приложение для учета доходов и расходов, �
 - Operation details
 - Add / Edit operation form
 
+## Скриншоты
+
+### Operation Details
+
+![Operation Details](Screenshots/operation-details.png)
+
+### Add / Edit Operation
+
+![Add Operation](Screenshots/add-operation.png)
+
 ## Тесты
 
 Проект содержит unit-тесты для проверки логики ViewModel:
