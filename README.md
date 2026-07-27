@@ -2,8 +2,6 @@
 
 iOS-приложение для учета доходов и расходов, написанное на **SwiftUI** с использованием архитектуры **MVVM**
 
-![Operation List](Screenshots/operation-list.png)
-
 ## Функциональность
 
 - Просмотр списка операций
@@ -46,13 +44,23 @@ iOS-приложение для учета доходов и расходов, �
 
 ## Скриншоты
 
+### Operation List
+
+<p align="center">
+  <img src="Screenshots/operation-list.png" width="280">
+</p>
+
 ### Operation Details
 
-![Operation Details](Screenshots/operation-details.png)
+<p align="center">
+  <img src="Screenshots/operation-details.png" width="280">
+</p>
 
 ### Add / Edit Operation
 
-![Add Operation](Screenshots/add-operation.png)
+<p align="center">
+  <img src="Screenshots/add-operation.png" width="280">
+</p>
 
 ## Тесты
 

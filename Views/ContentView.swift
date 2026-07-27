@@ -12,18 +12,15 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                if isLoggedIn {
-                    LoggedInView(handleLogout: {
-                        isLoggedIn = false
-                    })
-                } else {
-                    LoginView(handleLogin: {
-                        isLoggedIn = true
-                    })
+            if isLoggedIn {
+                LoggedInView {
+                    isLoggedIn = false
+                }
+            } else {
+                LoginView {
+                    isLoggedIn = true
                 }
             }
-            .padding()
         }
     }
 }
