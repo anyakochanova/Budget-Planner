@@ -12,15 +12,13 @@ struct LoggedInView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            OperationListView()
-
-            Button("Log out") {
-                handleLogout()
-            }
+            OperationListView(handleLogout: handleLogout)
         }
     }
 }
 
 #Preview {
-    LoggedInView(handleLogout: {})
+    NavigationStack{
+        LoggedInView(handleLogout: {})
+    }
 }

@@ -34,10 +34,6 @@ class ListViewModel: ObservableObject {
         }
     }
     
-    var totalBalance: Double {
-        operations.map { $0.amount }.reduce(0, +)
-    }
-    
     var expenses: Double {
         operations
             .filter { $0.type == .expense }
@@ -50,6 +46,10 @@ class ListViewModel: ObservableObject {
             .filter { $0.type == .income }
             .map { $0.amount }
             .reduce(0, +)
+    }
+    
+    var totalBalance: Double {
+        incomes - expenses
     }
     
     // Actions
