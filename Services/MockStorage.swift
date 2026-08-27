@@ -21,7 +21,7 @@ final class MockStorage: OperationsStorageProtocol {
     // Actions
     func editOperation(_ operation: Operation) throws {
         if operation.title.isEmpty {
-            throw StorageError.emptyTytle
+            throw StorageError.emptyTitle
         }
         
         if operation.amount == 0 || operation.amount < 0 {
@@ -36,7 +36,7 @@ final class MockStorage: OperationsStorageProtocol {
     
     func addOperation(_ operation: Operation) throws {
         if operation.title.isEmpty {
-            throw StorageError.emptyTytle
+            throw StorageError.emptyTitle
         }
         
         if operation.amount == 0 || operation.amount < 0 {

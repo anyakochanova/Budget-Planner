@@ -44,19 +44,19 @@ iOS-приложение для учета доходов и расходов, �
 
 ## Скриншоты
 
-### Operation List
+### Список операций
 
 <p align="center">
   <img src="Screenshots/operation-list.png" width="280">
 </p>
 
-### Operation Details
+### Детали операции
 
 <p align="center">
   <img src="Screenshots/operation-details.png" width="280">
 </p>
 
-### Add / Edit Operation
+### Добавление / редактирование операции
 
 <p align="center">
   <img src="Screenshots/add-operation.png" width="280">
@@ -71,6 +71,8 @@ iOS-приложение для учета доходов и расходов, �
 - Редактирование операции
 - Вычисление общего баланса
 - Фильтрация операций
+
+Для тестов используется отдельная реализация `TestMockStorage`, что позволяет проверять логику `ListViewModel` независимо от основного хранилища.
 
 ## Запуск проекта
 
