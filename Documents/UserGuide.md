@@ -8,7 +8,7 @@ iOS-приложение для учета доходов и расходов.
 При запуске приложения отображается экран входа.
 
 <p align="center">
-  <img src="Screenshots/login.png" width="280">
+  <img src="../Screenshots/login.png" width="280">
 </p>
 
 Для перехода к списку операций:
@@ -21,7 +21,7 @@ iOS-приложение для учета доходов и расходов.
 После входа открывается список финансовых операций.
 
 <p align="center">
-  <img src="Screenshots/operation-list.png" width="280">
+  <img src="../Screenshots/operation-list.png" width="280">
 </p>
 
 В верхней части экрана отображаются:
@@ -37,7 +37,7 @@ iOS-приложение для учета доходов и расходов.
 Для просмотра подробной информации об операции нажмите на неё в списке.
 
 <p align="center">
-  <img src="Screenshots/operation-details.png" width="280">
+  <img src="../Screenshots/operation-details.png" width="280">
 </p>
 
 ## Фильтрация расходов
@@ -49,7 +49,7 @@ iOS-приложение для учета доходов и расходов.
 Чтобы снова увидеть все операции, выключите переключатель.
 
 <p align="center">
-  <img src="Screenshots/filtered.png" width="280">
+  <img src="../Screenshots/filtered.png" width="280">
 </p>
 
 ## Добавление операции
@@ -63,7 +63,7 @@ iOS-приложение для учета доходов и расходов.
 - Нажмите **Add**
 
 <p align="center">
-  <img src="Screenshots/add-operation.png" width="280">
+  <img src="../Screenshots/add-operation.png" width="280">
 </p>
 
 После сохранения новая операция появляется в списке.
@@ -77,7 +77,7 @@ iOS-приложение для учета доходов и расходов.
 - Нажмите **Update**
 
 <p align="center">
-  <img src="Screenshots/edit-operation.png" width="280">
+  <img src="../Screenshots/edit-operation.png" width="280">
 </p>
 
 После сохранения обновленные данные отображаются в списке операций.
@@ -98,7 +98,7 @@ iOS-приложение для учета доходов и расходов.
 При возникновении ошибки приложение отображает сообщение с описанием проблемы.
 
 <p align="center">
-  <img src="Screenshots/error.png" width="280">
+  <img src="../Screenshots/error.png" width="280">
 </p>
 
 После исправления данных операцию можно сохранить повторно.
